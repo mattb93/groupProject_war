@@ -4,8 +4,10 @@ import sofia.app.ShapeScreen;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * The first screen of the War Game, the title Screen.
+ *
+ *
+ * If you can see this, it worked.
  *
  * @author Matt
  * @version Oct 31, 2012
