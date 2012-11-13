@@ -24,6 +24,6 @@ public class LaunchScreen
         //:|
         //:(
 
-        //FUCKKKKK GITHUB IS COMPLICATED
+        //Please work
     }
 }
