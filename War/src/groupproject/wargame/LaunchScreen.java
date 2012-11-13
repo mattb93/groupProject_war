@@ -19,5 +19,9 @@ public class LaunchScreen
     public LaunchScreen()
     {
         //TODO
+        //:D
+        //:)
+        //:|
+        //:(
     }
 }
