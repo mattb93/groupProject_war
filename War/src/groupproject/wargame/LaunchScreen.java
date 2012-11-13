@@ -24,6 +24,6 @@ public class LaunchScreen
         //:|
         //:(
 
-        //Please work
+        //Please, please work
     }
 }
