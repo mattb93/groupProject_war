@@ -9,7 +9,7 @@
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
-        android:targetPackage="War" >
+        android:targetPackage="groupproject.wargame" >
     </instrumentation>
 
     <application
