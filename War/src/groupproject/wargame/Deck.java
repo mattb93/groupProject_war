@@ -30,7 +30,9 @@ public class Deck
      */
     public Deck()
     {
-        decks = new ArrayList<Card>();
+        // We can set the arrayList to have a specific size, since we know how
+        // many cards will be in it when it is full
+        decks = new ArrayList<Card>(52);
     }
 
 
@@ -118,6 +120,22 @@ public class Deck
 
         decks.clear();
 
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Fills the deck with a proper set of 52 cards
+     */
+    public void fill()
+    {
+        for (int suit = 0; suit <= 3; suit++)
+        {
+            for (int value = 2; value <= 14; value++)
+            {
+                add(new Card(suit, value));
+            }
+        }
     }
 
 }
