@@ -56,18 +56,6 @@ public class Card
 
     // ----------------------------------------------------------
     /**
-     * Returns the card's integer value.
-     *
-     * @return the card's integer value.
-     */
-    public int value()
-    {
-        return this.value;
-    }
-
-
-    // ----------------------------------------------------------
-    /**
      * Returns the card's suit.
      *
      * @return the card's suit as a string.
@@ -93,6 +81,18 @@ public class Card
         {
             return "Spades";
         }
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Returns the card's integer value.
+     *
+     * @return the card's integer value.
+     */
+    public int value()
+    {
+        return this.value;
     }
 
 
@@ -129,5 +129,24 @@ public class Card
         {
             return "Not a face card";
         }
+    }
+
+    public String toString()
+    {
+        String result = "";
+
+        if (value < 11)
+        {
+            result = result + value;
+        }
+        else
+        {
+            result = result + faceValue();
+        }
+
+        result = result + " of ";
+        result = result + suit();
+
+        return result;
     }
 }

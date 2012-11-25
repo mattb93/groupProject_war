@@ -1,12 +1,11 @@
 package groupproject.wargame;
 
-import java.util.EmptyStackException;
 import java.util.Random;
 import java.util.ArrayList;
 
 // -------------------------------------------------------------------------
 /**
- * Constructs Deck of cards for the player
+ * Constructs Deck of cards for the player.
  *
  * @author Matthew Bock (mattb93)
  * @author Kevin Olson (kevino93)
@@ -18,10 +17,7 @@ import java.util.ArrayList;
 public class Deck
 {
 
-    /**
-     * An Array List of type Card
-     */
-    ArrayList<Card> decks;
+    private ArrayList<Card> decks;
 
 
     // ----------------------------------------------------------
@@ -60,7 +56,7 @@ public class Deck
     {
         if (decks.size() == 0)
         {
-            throw new EmptyStackException();
+            throw new IllegalStateException("There are no cards in the deck.");
         }
         else
         {
@@ -80,37 +76,31 @@ public class Deck
 
     {
         return decks.size();
-
     }
 
 
+    // ----------------------------------------------------------
     /**
-     * Randomly shuffles the pile .removes the top card and puts another card to
-     * that position
+     * Randomly shuffles the deck. Takes cards randomly out of the deck and
+     * copies them into a new ArrayList. Resets the decks field to be that new
+     * ArrayList.
      */
     public void shuffle()
     {
         Random rand = new Random();
+        ArrayList<Card> newDeck = new ArrayList<Card>(52);
 
-        for (int i = 0; i < decks.size(); i++)
-
+        for (int i = 0; i < 52; i++)
         {
-
-            if (size() > 0)
-            {
-
-                Card top = decks.remove(decks.size() - 1);
-                int now = rand.nextInt(decks.size());
-
-                decks.add(now, top);
-
-            }
-
+            int take = rand.nextInt(decks.size());
+            newDeck.add(decks.remove(take));
         }
 
+        decks = newDeck;
     }
 
 
+    // ----------------------------------------------------------
     /**
      * It clears the deck
      */
@@ -138,4 +128,24 @@ public class Deck
         }
     }
 
+
+    // ----------------------------------------------------------
+    /**
+     * returns a string representing the cards in the deck
+     *
+     * @return a list of the cards in the deck.
+     */
+    public String toString()
+    {
+        String result = "Deck makeup:";
+        String newLine = System.getProperty("line.separator");
+
+        for (Card card : decks)
+        {
+            result = result + newLine;
+            result = result + card.toString();
+        }
+
+        return result;
+    }
 }

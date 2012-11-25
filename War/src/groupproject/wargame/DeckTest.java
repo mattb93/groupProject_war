@@ -1,10 +1,7 @@
 package groupproject.wargame;
 
-import static org.junit.Assert.*;
-import java.util.ArrayList;
 import student.TestCase;
-import org.junit.Before;
-import org.junit.Test;
+import java.util.ArrayList;
 
 // -------------------------------------------------------------------------
 /**
@@ -20,7 +17,7 @@ import org.junit.Test;
 public class DeckTest
     extends TestCase
 {
-    private ArrayList<Card> decks1;
+    private Deck deck;
 
 
     // ----------------------------------------------------------
@@ -31,16 +28,61 @@ public class DeckTest
     public void setUp()
 
     {
-        decks1 = new ArrayList<Card>();
+        deck = new Deck();
+        deck.fill();
     }
 
 
     // ----------------------------------------------------------
     /**
-     * Tests The top method.
+     * Tests the fill method to make sure that the deck is full of valid cards.
+     */
+    public void testFill()
+    {
+        System.out.println(deck.toString());
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the top method, including if there are no cards and only one card
+     * in the deck.
      */
     public void testTop()
     {
+        assertEquals("Ace of Spades", deck.top().toString());
+        assertEquals("King of Spades", deck.top().toString());
 
+        deck.clear();
+
+        try
+        {
+            deck.top();
+        }
+        catch (IllegalStateException e)
+        {
+            assertEquals("There are no cards in the deck.", e.getMessage());
+        }
+
+        deck.add(new Card(0, 2));
+        assertEquals("2 of Clubs", deck.top().toString());
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests shuffling the deck.
+     */
+    public void testShuffle()
+    {
+        String before = deck.toString();
+        System.out.println(deck.toString());
+
+        deck.shuffle();
+
+        String after = deck.toString();
+        System.out.println(deck.toString());
+
+        assertFalse(before == after);
     }
 }

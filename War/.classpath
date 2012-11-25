@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="src" path="/CS2114-Support"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Matt/workspace/Sofia-v2/libs/sofia-with-dependencies.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Sofia-v2"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
