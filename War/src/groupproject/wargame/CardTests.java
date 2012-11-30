@@ -57,25 +57,38 @@ public class CardTests
     public void testValues()
     {
         card = new Card(0, 11);
-        assertEquals(11, card.value());
+        assertEquals(10, card.value());
         assertEquals("Joker", card.faceValue());
 
         card = new Card(0, 12);
-        assertEquals(12, card.value());
+        assertEquals(10, card.value());
         assertEquals("Queen", card.faceValue());
 
         card = new Card(0, 13);
-        assertEquals(13, card.value());
+        assertEquals(10, card.value());
         assertEquals("King", card.faceValue());
 
         card = new Card(0, 14);
-        assertEquals(14, card.value());
+        assertEquals(11, card.value());
         assertEquals("Ace", card.faceValue());
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Tests toString
+     */
     public void testToString()
     {
         card = new Card(2, 12);
         assertEquals("Queen of Diamonds", card.toString());
+    }
+
+    public void testTypes()
+    {
+        card = new Card(2, 4);
+        assertEquals(4, card.type());
+
+        card = new Card(1, 12);
+        assertEquals(12, card.type());
     }
 }

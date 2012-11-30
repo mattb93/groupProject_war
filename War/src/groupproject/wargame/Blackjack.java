@@ -4,15 +4,18 @@ package groupproject.wargame;
 /**
  * Blackjack game class
  *
+ * Logic we need for BlackJack
+ *
+ *
  * @author Kevin Olson (kevino93)
  * @author Matthew Bock (mattb93)
  * @author John Sebestin (jseb11)
  * @author Sonika Singh (sonika06)
  * @version Nov 29, 2012
  */
-public class Blackjack
+public class Blackjack extends CardGame
 {
-    private Deck deck;
+    public Deck deck;
     private CardPlayer player;
 
 

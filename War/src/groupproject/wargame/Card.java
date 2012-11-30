@@ -12,12 +12,14 @@ package groupproject.wargame;
  */
 public class Card
 {
+    private int value;
+
     private int suit;
     /**
      * 0 is clubs, 1 is hearts, 2 is diamonds, 3 is spades
      */
 
-    private int value;
+    private int type;
 
 
     /**
@@ -30,14 +32,27 @@ public class Card
      *
      * @param suit
      *            The suit to classify the card under.
-     * @param value
+     * @param type
      *            The value the card has. Face cards are 11 for joker, 12 for
      *            queen, 13 for king, and 14 for ace.
      */
-    public Card(int suit, int value)
+    public Card(int suit, int type)
     {
         this.suit = suit;
-        this.value = value;
+        this.type = type;
+
+        if (1 <= type && type <= 9)
+        {
+            this.value = type;
+        }
+        if (10 <= type && type <= 13)
+        {
+            this.value = 10;
+        }
+        if (type == 14)
+        {
+            this.value = 11;
+        }
     }
 
 
@@ -86,13 +101,25 @@ public class Card
 
     // ----------------------------------------------------------
     /**
-     * Returns the card's integer value.
+     * The number of points that the card is worth.
      *
      * @return the card's integer value.
      */
     public int value()
     {
         return this.value;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * What kind of card this is.
+     *
+     * @return the type of card represented as an integer.
+     */
+    public int type()
+    {
+        return this.type;
     }
 
 
@@ -105,22 +132,22 @@ public class Card
      */
     public String faceValue()
     {
-        if (value == 11)
+        if (type == 11)
         {
             return "Joker";
         }
 
-        else if (value == 12)
+        else if (type == 12)
         {
             return "Queen";
         }
 
-        else if (value == 13)
+        else if (type == 13)
         {
             return "King";
         }
 
-        else if (value == 14)
+        else if (type == 14)
         {
             return "Ace";
         }
@@ -131,13 +158,14 @@ public class Card
         }
     }
 
+
     public String toString()
     {
         String result = "";
 
-        if (value < 11)
+        if (type < 11)
         {
-            result = result + value;
+            result = result + type;
         }
         else
         {
@@ -148,5 +176,23 @@ public class Card
         result = result + suit();
 
         return result;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Switches between high and low ace values.
+     */
+    public void toggleAce()
+    {
+        if (value == 11)
+        {
+            value = 1;
+        }
+
+        if (value == 1)
+        {
+            value = 11;
+        }
     }
 }
