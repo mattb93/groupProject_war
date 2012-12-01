@@ -39,11 +39,4 @@ public abstract class CardGame
         deck.fill();
         deck.shuffle();
     }
-
-
-    public void setPlayers(CardPlayer firstPlayer, CardPlayer secondPlayer)
-    {
-        player1 = firstPlayer;
-        player2 = secondPlayer;
-    }
 }

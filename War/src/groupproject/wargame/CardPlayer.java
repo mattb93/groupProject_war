@@ -16,7 +16,10 @@ import java.util.ArrayList;
  */
 public abstract class CardPlayer
 {
-    private ArrayList<Card> hand = new ArrayList<Card>(26);
+    /**
+     * The player's hand.
+     */
+    protected ArrayList<Card> hand = new ArrayList<Card>(26);
 
 
     // ----------------------------------------------------------
@@ -45,6 +48,7 @@ public abstract class CardPlayer
         return hand.remove(n);
     }
 
+
     // ----------------------------------------------------------
     /**
      * Empties the player's hand.
@@ -52,5 +56,17 @@ public abstract class CardPlayer
     public void clearHand()
     {
         hand = new ArrayList<Card>(26);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Returns the player's hand.
+     *
+     * @return the player's hand.
+     */
+    public ArrayList<Card> returnHand()
+    {
+        return hand;
     }
 }
