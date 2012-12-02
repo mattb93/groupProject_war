@@ -18,6 +18,16 @@ public class BlackJackPlayer
 
     // ----------------------------------------------------------
     /**
+     * Create a new BlackJackPlayer object.
+     */
+    public BlackJackPlayer()
+    {
+        // empty
+    }
+
+
+    // ----------------------------------------------------------
+    /**
      * Determines and returns the total points in the player's hand.
      *
      * @return the points in the player's hand.

@@ -1,9 +1,8 @@
 package groupproject.wargame;
 
-
 // -------------------------------------------------------------------------
 /**
- * Blackjack game class Logic we need for BlackJack
+ * Blackjack game class. Logic we need for BlackJack
  *
  * @author Kevin Olson (kevino93)
  * @author Matthew Bock (mattb93)
@@ -55,12 +54,28 @@ public class Blackjack
     /**
      * Gives a player a card.
      *
-     * @param receiver
+     * @param str
      *            the player to receive the card.
      * @return the card that was given to the player.
      */
-    public Card hit(BlackJackPlayer receiver)
+    public Card hit(String str)
     {
+        BlackJackPlayer receiver;
+        if(str == "Player")
+        {
+            receiver = player;
+        }
+        else if(str == "Dealer")
+        {
+            receiver = dealer;
+        }
+        else
+        {
+            receiver = null;
+            throw new IllegalStateException("You can only hit the "
+                + "Player or the Dealer");
+        }
+
         Card newCard = deck.top();
         receiver.receiveCard(newCard);
         return newCard;
@@ -79,14 +94,16 @@ public class Blackjack
 
         if (total > 21)
         {
-            score--;
-            return true;
+            player.hasAce();
+            total = player.returnTotal();
+
+            if (total > 21)
+            {
+                return true;
+            }
         }
 
-        else
-        {
-            return false;
-        }
+        return false;
 
     }
 
@@ -105,7 +122,7 @@ public class Blackjack
 
         while (computerTotal < playerTotal && computerTotal < 21)
         {
-            hit(dealer);
+            hit("Dealer");
             computerTotal = dealer.returnTotal();
             if (computerTotal > 21)
             {
@@ -149,5 +166,29 @@ public class Blackjack
     public Deck getDeck()
     {
         return deck;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Returns the human player in the game.
+     *
+     * @return the human player.
+     */
+    public BlackJackPlayer returnPlayer()
+    {
+        return player;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Returns the computer player.
+     *
+     * @return the computer player.
+     */
+    public BlackJackPlayer returnDealer()
+    {
+        return dealer;
     }
 }

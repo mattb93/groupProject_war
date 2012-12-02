@@ -13,14 +13,12 @@ import sofia.app.ShapeScreen;
 public class LaunchScreen
     extends ShapeScreen
 {
+    // ----------------------------------------------------------
+    /**
+     * Create a new LaunchScreen object.
+     */
     public LaunchScreen()
     {
-        // TODO
-        // :D
-        // :)
-        // :|
-        // :(
 
-        // Please, please work
     }
 }

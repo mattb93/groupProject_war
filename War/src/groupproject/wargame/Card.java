@@ -190,7 +190,7 @@ public class Card
             value = 1;
         }
 
-        if (value == 1)
+        else if (value == 1)
         {
             value = 11;
         }

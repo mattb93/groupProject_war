@@ -45,7 +45,14 @@ public abstract class CardPlayer
      */
     public Card giveCard(int n)
     {
-        return hand.remove(n);
+        if (hand.size() == 0)
+        {
+            throw new IllegalStateException("The player has no cards");
+        }
+        else
+        {
+            return hand.remove(n);
+        }
     }
 
 

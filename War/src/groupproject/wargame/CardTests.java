@@ -83,6 +83,10 @@ public class CardTests
         assertEquals("Queen of Diamonds", card.toString());
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Testing the type functionality.
+     */
     public void testTypes()
     {
         card = new Card(2, 4);
@@ -90,5 +94,18 @@ public class CardTests
 
         card = new Card(1, 12);
         assertEquals(12, card.type());
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * Test changing the values in aces.
+     */
+    public void testToggleAce()
+    {
+        card = new Card(2, 14);
+        assertEquals(11, card.value());
+
+        card.toggleAce();
+        assertEquals(1, card.value());
     }
 }

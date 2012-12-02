@@ -14,8 +14,6 @@ package groupproject.wargame;
 public abstract class CardGame
 {
     private Deck       deck = new Deck();
-    private CardPlayer player1;
-    private CardPlayer player2;
 
 
     // ----------------------------------------------------------

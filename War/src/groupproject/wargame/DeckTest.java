@@ -1,8 +1,5 @@
 package groupproject.wargame;
 
-import student.TestCase;
-import java.util.ArrayList;
-
 // -------------------------------------------------------------------------
 /**
  * Tests for the Deck class
@@ -15,7 +12,7 @@ import java.util.ArrayList;
  */
 
 public class DeckTest
-    extends TestCase
+    extends student.TestCase
 {
     private Deck deck;
 
