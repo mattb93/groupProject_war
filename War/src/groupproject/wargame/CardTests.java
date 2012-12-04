@@ -108,4 +108,14 @@ public class CardTests
         card.toggleAce();
         assertEquals(1, card.value());
     }
+
+    // ----------------------------------------------------------
+    /**
+     * Tests getting the graphic representing this card.
+     */
+    public void testGraphics()
+    {
+        card = new Card(0, 7);
+        assertEquals("7Clubs.png", card.toGraphic());
+    }
 }

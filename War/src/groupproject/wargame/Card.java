@@ -12,14 +12,16 @@ package groupproject.wargame;
  */
 public class Card
 {
-    private int value;
+    private String graphic;
 
-    private int suit;
+    private int    value;
+
+    private int    suit;
     /**
      * 0 is clubs, 1 is hearts, 2 is diamonds, 3 is spades
      */
 
-    private int type;
+    private int    type;
 
 
     /**
@@ -194,5 +196,21 @@ public class Card
         {
             value = 11;
         }
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Returns the name of the image corresponding to this card.
+     *
+     * @return the name of this card's image.
+     */
+    public String toGraphic()
+    {
+        String result = "";
+
+        result = type + suit() + ".png";
+
+        return result;
     }
 }
