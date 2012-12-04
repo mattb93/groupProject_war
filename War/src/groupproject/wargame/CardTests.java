@@ -34,19 +34,19 @@ public class CardTests
     {
         card = new Card(0, 4);
         assertEquals(0, card.suitValue());
-        assertEquals("Clubs", card.suit());
+        assertEquals("clubs", card.suit());
 
         card = new Card(1, 4);
         assertEquals(1, card.suitValue());
-        assertEquals("Hearts", card.suit());
+        assertEquals("hearts", card.suit());
 
         card = new Card(2, 4);
         assertEquals(2, card.suitValue());
-        assertEquals("Diamonds", card.suit());
+        assertEquals("diamonds", card.suit());
 
         card = new Card(3, 4);
         assertEquals(3, card.suitValue());
-        assertEquals("Spades", card.suit());
+        assertEquals("spades", card.suit());
     }
 
 
@@ -58,19 +58,19 @@ public class CardTests
     {
         card = new Card(0, 11);
         assertEquals(10, card.value());
-        assertEquals("Joker", card.faceValue());
+        assertEquals("jack", card.faceValue());
 
         card = new Card(0, 12);
         assertEquals(10, card.value());
-        assertEquals("Queen", card.faceValue());
+        assertEquals("queen", card.faceValue());
 
         card = new Card(0, 13);
         assertEquals(10, card.value());
-        assertEquals("King", card.faceValue());
+        assertEquals("king", card.faceValue());
 
         card = new Card(0, 14);
         assertEquals(11, card.value());
-        assertEquals("Ace", card.faceValue());
+        assertEquals("ace", card.faceValue());
     }
 
     // ----------------------------------------------------------
@@ -80,7 +80,7 @@ public class CardTests
     public void testToString()
     {
         card = new Card(2, 12);
-        assertEquals("Queen of Diamonds", card.toString());
+        assertEquals("queen of diamonds", card.toString());
     }
 
     // ----------------------------------------------------------
@@ -116,6 +116,6 @@ public class CardTests
     public void testGraphics()
     {
         card = new Card(0, 7);
-        assertEquals("7Clubs.png", card.toGraphic());
+        assertEquals("clubs7", card.toGraphic());
     }
 }

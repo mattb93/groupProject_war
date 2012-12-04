@@ -65,12 +65,12 @@ public class BlackjackTest
         game.deck.add(new Card(2, 14));
         game.deck.add(new Card(1, 14));
 
-        assertEquals("Ace of Hearts", game.hit("Player").toString());
-        assertEquals("Ace of Hearts", game.returnPlayer().giveCard(0)
+        assertEquals("ace of hearts", game.hit("Player").toString());
+        assertEquals("ace of hearts", game.returnPlayer().giveCard(0)
             .toString());
 
-        assertEquals("Ace of Diamonds", game.hit("Dealer").toString());
-        assertEquals("Ace of Diamonds", game.returnDealer().giveCard(0)
+        assertEquals("ace of diamonds", game.hit("Dealer").toString());
+        assertEquals("ace of diamonds", game.returnDealer().giveCard(0)
             .toString());
 
         try

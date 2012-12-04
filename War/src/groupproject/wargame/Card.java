@@ -81,22 +81,22 @@ public class Card
     {
         if (suit == 0)
         {
-            return "Clubs";
+            return "clubs";
         }
 
         else if (suit == 1)
         {
-            return "Hearts";
+            return "hearts";
         }
 
         else if (suit == 2)
         {
-            return "Diamonds";
+            return "diamonds";
         }
 
         else
         {
-            return "Spades";
+            return "spades";
         }
     }
 
@@ -136,22 +136,22 @@ public class Card
     {
         if (type == 11)
         {
-            return "Joker";
+            return "jack";
         }
 
         else if (type == 12)
         {
-            return "Queen";
+            return "queen";
         }
 
         else if (type == 13)
         {
-            return "King";
+            return "king";
         }
 
         else if (type == 14)
         {
-            return "Ace";
+            return "ace";
         }
 
         else
@@ -209,7 +209,7 @@ public class Card
     {
         String result = "";
 
-        result = type + suit() + ".png";
+        result = suit() + type;
 
         return result;
     }

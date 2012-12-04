@@ -47,8 +47,8 @@ public class DeckTest
      */
     public void testTop()
     {
-        assertEquals("Ace of Spades", deck.top().toString());
-        assertEquals("King of Spades", deck.top().toString());
+        assertEquals("ace of spades", deck.top().toString());
+        assertEquals("king of spades", deck.top().toString());
 
         deck.clear();
 
@@ -62,7 +62,7 @@ public class DeckTest
         }
 
         deck.add(new Card(0, 2));
-        assertEquals("2 of Clubs", deck.top().toString());
+        assertEquals("2 of clubs", deck.top().toString());
     }
 
 
