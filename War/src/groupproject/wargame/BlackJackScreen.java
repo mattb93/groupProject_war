@@ -2,7 +2,6 @@ package groupproject.wargame;
 
 import sofia.graphics.TextShape;
 import sofia.graphics.RectangleShape;
-import android.widget.Toast;
 import java.util.ArrayList;
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
@@ -46,6 +45,8 @@ public class BlackJackScreen
     private TextShape             playerName;
     private TextShape             playerPointsShape;
 
+    private TextShape             winResult;
+
 
     // ----------------------------------------------------------
     /**
@@ -58,6 +59,12 @@ public class BlackJackScreen
         standable = true;
         nextDealerIndex = 0;
         nextPlayerIndex = 0;
+
+        remove(winResult);
+        winResult = new TextShape("");
+        winResult.setText("BlackJack");
+        winResult.setVisible(false);
+        add(winResult);
 
         dealerCardList = new ArrayList<ImageShape>(8);
         playerCardList = new ArrayList<ImageShape>(8);
@@ -121,14 +128,13 @@ public class BlackJackScreen
         add(playerBox);
 
         playerName =
-            new TextShape("You", 4 * cardWidth + 5, height - 2*cardHeight + 5);
+            new TextShape("You", 4 * cardWidth + 5, height - 2 * cardHeight + 5);
         playerName.setColor(Color.black);
         playerName.setTypeSize(5f);
         add(playerName);
 
         playerPointsShape =
-            new TextShape("" + 0, 4 * cardWidth + 5, height
-                - cardHeight);
+            new TextShape("" + 0, 4 * cardWidth + 5, height - cardHeight);
         playerPointsShape.setColor(Color.black);
         playerPointsShape.setTypeSize(8f);
         add(playerPointsShape);
@@ -162,7 +168,6 @@ public class BlackJackScreen
         {
             Card hit = game.hit("Player");
 
-
             if (nextPlayerIndex > 7)
             {
                 nextPlayerIndex = 0;
@@ -173,7 +178,8 @@ public class BlackJackScreen
 
             if (game.checkLose())
             {
-                playerPointsShape.setText("" + game.returnPlayer().returnTotal());
+                playerPointsShape.setText(""
+                    + game.returnPlayer().returnTotal());
                 playerLost();
             }
 
@@ -241,7 +247,10 @@ public class BlackJackScreen
         hitable = false;
         standable = false;
         String str = "You Lost! Press reset to play again.";
-        Toast.makeText(this, str, Toast.LENGTH_LONG).show();
+        winResult.setText(str);
+        winResult.setPosition(width / 2 - winResult.getWidth() / 2, height / 2
+            - winResult.getHeight() / 2);
+        winResult.setVisible(true);
     }
 
 
@@ -254,6 +263,9 @@ public class BlackJackScreen
         hitable = false;
         standable = false;
         String str = "You Won! Press reset to play again.";
-        Toast.makeText(this, str, Toast.LENGTH_LONG).show();
+        winResult.setText(str);
+        winResult.setPosition(width / 2 - winResult.getWidth() / 2, height / 2
+            - winResult.getHeight() / 2);
+        winResult.setVisible(true);
     }
 }
