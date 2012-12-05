@@ -12,7 +12,6 @@ package groupproject.wargame;
  */
 public class Card
 {
-    private String graphic;
 
     private int    value;
 

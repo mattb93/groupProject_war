@@ -11,7 +11,10 @@ import sofia.graphics.Color;
  * Write a one-sentence summary of your class here. Follow it with additional
  * details about its purpose, what abstraction it represents, and how to use it.
  *
- * @author Matt
+ * @author Matthew Bock (mattb93)
+ * @author Kevin Olson (kevino93)
+ * @author John Sebestin (jseb11)
+ * @author Sonika Singh (sonika06)
  * @version Dec 3, 2012
  */
 public class BlackJackScreen
@@ -28,6 +31,10 @@ public class BlackJackScreen
     private int nextPlayerIndex = 0;
 
 
+    // ----------------------------------------------------------
+    /**
+     * Run when the screen is created.
+     */
     public void initialize()
     {
         game = new Blackjack();
@@ -81,11 +88,19 @@ public class BlackJackScreen
         }
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Stuff to do when the player loses.
+     */
     public void playerLost()
     {
 
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Stuff to do when the player wins.
+     */
     public void playerWon()
     {
 
