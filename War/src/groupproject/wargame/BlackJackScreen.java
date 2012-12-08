@@ -22,59 +22,75 @@ import sofia.graphics.Color;
 public class BlackJackScreen
     extends ShapeScreen
 {
+    // The blackjack game
     private Blackjack             game;
+    private String                name;
 
+    // Common dimensions we will need.
     private float                 height;
     private float                 width;
     private float                 cardHeight;
     private float                 cardWidth;
 
+    // Lists to handle the card images that are currently on the screen.
     private ArrayList<ImageShape> dealerCardList;
     private int                   nextDealerIndex;
     private ArrayList<ImageShape> playerCardList;
     private int                   nextPlayerIndex;
 
+    // Booleans to control when the hit and stand buttons will work.
     private boolean               hitable;
     private boolean               standable;
+    private boolean               resetText = false;
 
+    // The box with the dealer's score.
     private RectangleShape        dealerBox;
     private TextShape             dealerName;
     private TextShape             dealerPointsShape;
 
+    // The box with the player's score
     private RectangleShape        playerBox;
     private TextShape             playerName;
     private TextShape             playerPointsShape;
 
+    // Text that will show up in the middle of the screen when the game is over.
     private TextShape             winResult;
 
 
     // ----------------------------------------------------------
     /**
      * Run when the screen is created.
+     *
+     * @param nameFromLaunch
+     *            the name of the player, passed in from LaunchScreen.
      */
-    public void initialize()
+    public void initialize(String nameFromLaunch)
     {
+        // Initialize necessary fields.
         game = new Blackjack();
         hitable = true;
         standable = true;
         nextDealerIndex = 0;
         nextPlayerIndex = 0;
+        name = nameFromLaunch;
 
-        remove(winResult);
-        winResult = new TextShape("");
-        winResult.setText("BlackJack");
-        winResult.setVisible(false);
-        add(winResult);
+        if (resetText)
+        {
+            remove(winResult);
+        }
 
+        // Initialize the arrays that will hold the players' card images.
         dealerCardList = new ArrayList<ImageShape>(8);
         playerCardList = new ArrayList<ImageShape>(8);
 
+        // Set the shapeScreen to be green and get its dimensions.
         setBackgroundColor(Color.green);
         height = getHeight();
         width = getWidth();
         cardWidth = 72;
         cardHeight = 96;
 
+        // Draw the blank spaces to hold the dealer's cards
         for (float i = 0; i < 2 * cardHeight; i = i + cardHeight)
         {
             for (float j = 0; j < cardWidth * 4; j = j + cardWidth)
@@ -87,6 +103,7 @@ public class BlackJackScreen
             }
         }
 
+        // Draw the blank spaces to hold the player's cards.
         for (float i = height - 2 * cardHeight; i < height; i = i + cardHeight)
         {
             for (float j = 0; j < cardWidth * 4; j = j + cardWidth)
@@ -99,23 +116,27 @@ public class BlackJackScreen
             }
         }
 
+        // Draw the box to the right of the dealer's cards.
         dealerBox = new RectangleShape(4 * cardWidth, 0, width, 2 * cardHeight);
         dealerBox.setColor(Color.black);
         dealerBox.setFillColor(Color.green);
         dealerBox.setFilled(true);
         add(dealerBox);
 
+        // Add the dealer's name ("Dealer") to the box.
         dealerName = new TextShape("Dealer", 4 * cardWidth + 5, 5);
         dealerName.setColor(Color.black);
         dealerName.setTypeSize(5f);
         add(dealerName);
 
+        // Set up the textView that will display the dealer's score.
         dealerPointsShape =
             new TextShape("" + 0, 4 * cardWidth + 5, cardHeight / 2);
         dealerPointsShape.setColor(Color.black);
         dealerPointsShape.setTypeSize(8f);
         add(dealerPointsShape);
 
+        // Set up the box next to the player's cards.
         playerBox =
             new RectangleShape(
                 4 * cardWidth,
@@ -127,20 +148,25 @@ public class BlackJackScreen
         playerBox.setFilled(true);
         add(playerBox);
 
+        // Set up the textView to display the player's name ("You").
         playerName =
-            new TextShape("You", 4 * cardWidth + 5, height - 2 * cardHeight + 5);
+            new TextShape(this.name, 4 * cardWidth + 5, height - 2 * cardHeight
+                + 5);
         playerName.setColor(Color.black);
         playerName.setTypeSize(5f);
         add(playerName);
 
+        // Set up the textView to display the player's score
         playerPointsShape =
             new TextShape("" + 0, 4 * cardWidth + 5, height - cardHeight);
         playerPointsShape.setColor(Color.black);
         playerPointsShape.setTypeSize(8f);
         add(playerPointsShape);
 
+        // Deal the initial cards
         game.dealHand();
 
+        // Get the players' scores after their first 2 cards
         for (Card c : game.returnPlayer().returnHand())
         {
             playerCardList.get(nextPlayerIndex).setImage(c.toGraphic());
@@ -194,7 +220,8 @@ public class BlackJackScreen
      */
     public void resetButtonClicked()
     {
-        initialize();
+
+        initialize(name);
     }
 
 
@@ -246,11 +273,20 @@ public class BlackJackScreen
     {
         hitable = false;
         standable = false;
+
         String str = "You Lost! Press reset to play again.";
-        winResult.setText(str);
-        winResult.setPosition(width / 2 - winResult.getWidth() / 2, height / 2
-            - winResult.getHeight() / 2);
+        winResult = new TextShape(str);
+        winResult.setTypeSize(5f);
+
+        resetText = true;
+
+        float textWidth = winResult.getWidth();
+        float textHeight = winResult.getHeight();
+
+        winResult.setPosition((width / 2) - (textWidth / 2), (height / 2)
+            - (textHeight / 2));
         winResult.setVisible(true);
+        add(winResult);
     }
 
 
@@ -262,10 +298,19 @@ public class BlackJackScreen
     {
         hitable = false;
         standable = false;
+
+        resetText = true;
+
         String str = "You Won! Press reset to play again.";
-        winResult.setText(str);
-        winResult.setPosition(width / 2 - winResult.getWidth() / 2, height / 2
-            - winResult.getHeight() / 2);
+        winResult = new TextShape(str);
+        winResult.setTypeSize(5f);
+
+        float textWidth = winResult.getWidth();
+        float textHeight = winResult.getHeight();
+
+        winResult.setPosition((width / 2) - (textWidth / 2), (height / 2)
+            - (textHeight / 2));
         winResult.setVisible(true);
+        add(winResult);
     }
 }

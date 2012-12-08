@@ -2,26 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@color/green">
-
+    android:background="@color/green"
+    android:orientation="vertical" >
+
     <sofia.graphics.ShapeView
         android:id="@+id/shapeView"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_weight="0.45" />
+        android:layout_height="wrap_content"
+        android:layout_weight="0.10" />
 
     <Button
-        android:id="@+id/hitButton"
+        android:id="@+id/goButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hit me!" />
-
-    <Button
-        android:id="@+id/standButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Stand" />
+        android:text="Go!" />
 
     <Button
         android:id="@+id/resetButton"

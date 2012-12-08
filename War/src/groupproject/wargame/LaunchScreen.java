@@ -1,7 +1,7 @@
 package groupproject.wargame;
 
-import sofia.graphics.Color;
-import sofia.app.ShapeScreen;
+import android.widget.EditText;
+import sofia.app.Screen;
 
 // -------------------------------------------------------------------------
 /**
@@ -12,23 +12,28 @@ import sofia.app.ShapeScreen;
  * @version Oct 31, 2012
  */
 public class LaunchScreen
-    extends ShapeScreen
+    extends Screen
 {
-    // ----------------------------------------------------------
-    /**
-     * Run when the screen is created.
-     */
-    public void initialize()
-    {
-        setBackgroundColor(Color.green);
-    }
-
+    private EditText nameField;
     // ----------------------------------------------------------
     /**
      * Called when the BlackJack button is clicked.
      */
     public void blackJackButtonClicked()
     {
-        presentScreen(BlackJackScreen.class);
+        String name = nameField.getText().toString();
+
+        presentScreen(BlackJackScreen.class, name);
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * Called when the War button is clicked.
+     */
+    public void warButtonClicked()
+    {
+        String name = nameField.getText().toString();
+
+        presentScreen(WarScreen.class, name);
     }
 }
