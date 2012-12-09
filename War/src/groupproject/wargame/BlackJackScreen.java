@@ -10,8 +10,7 @@ import sofia.graphics.Color;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * The GUI for blackjack games.
  *
  * @author Matthew Bock (mattb93)
  * @author Kevin Olson (kevino93)

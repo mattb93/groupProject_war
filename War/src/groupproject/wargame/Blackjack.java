@@ -2,7 +2,7 @@ package groupproject.wargame;
 
 // -------------------------------------------------------------------------
 /**
- * Blackjack game class. Logic we need for BlackJack
+ * Blackjack game class. Logic we need for BlackJack.
  *
  * @author Kevin Olson (kevino93)
  * @author Matthew Bock (mattb93)

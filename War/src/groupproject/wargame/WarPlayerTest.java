@@ -3,9 +3,7 @@ package groupproject.wargame;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
+ *  Test cases for the war card player.
  *
  * @author Kevin Olson (kevino93)
  * @author Matthew Bock (mattb93)
